@@ -13,7 +13,7 @@ def generateObstacles(obstaclesSeed):
 	return obstacles
 
 def getRandomCoordinate(XmaxVal, YmaxVal):
-	return [ random.randint(1, XmaxVal) , random.randint(1, YmaxVal) ] 
+	return [ random.randint(0, XmaxVal-1) , random.randint(0, YmaxVal-1) ] 
 
 def generateMission(missionQuantity, width, height, obstacles):
 	missions = []
@@ -49,13 +49,13 @@ def run(currentMap, missions, robots):
 			if not bot.mission :
 				bot.mission = missions.pop()
 		for bot in robots:
-			print("bot action")
+			#print(bot.mission)
 			bot.act()
 
 def main():
 	morse = Morse()
-	maxX = 100
-	maxY = 100
+	maxX = 10
+	maxY = 10
 	missionNumber = 100
 	obstaclesSeed = [	[50, 0, 50, 50],
 						[80, 50,100,50],
