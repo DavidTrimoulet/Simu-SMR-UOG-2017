@@ -54,8 +54,8 @@ def run(currentMap, missions, robots):
 
 def main():
 	morse = Morse()
-	maxX = 10
-	maxY = 10
+	maxX = 100
+	maxY = 100
 	missionNumber = 100
 	obstaclesSeed = [	[50, 0, 50, 50],
 						[80, 50,100,50],

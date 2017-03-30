@@ -1,7 +1,7 @@
 
 from morse.builder import *
 from math import pi
-from CESIBot import CESIBot
+from Simu_SMR_UOG_2017.builder.robots.CESIBot import CESIBot
 
 
 robot1 = CESIBot()
@@ -67,7 +67,7 @@ robot4.add_service('socket')
 
 #	myrobots.append(robot)
 
-env = Environment('Models/Models.blend')
+env = Environment('/home/cesi/Simu_SMR_UOG_2017/Models/Models.blend')
 env.set_camera_location([0.0, 0.0, 20.0])
 env.set_camera_rotation([45, 0, 0])
 env.select_display_camera(robot4SemanticC)
