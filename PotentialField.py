@@ -11,8 +11,8 @@ class PotentialField():
 		self.ur = []
 		self.ua = []
 		self.u = []
-		self.attractionConst = 0.01
-		self.repulseConst = 10
+		self.attractionConst = 0.1
+		self.repulseConst = 10000
 
 	def printMap(self,map):
 		for line in map:
@@ -55,24 +55,29 @@ class PotentialField():
 		path = []
 		path.append(self.start)
 		curState = self.start
-		stuck = 1
-		while(curState != self.goal) and stuck :
+		stuck = 0
+		while(curState != self.goal) and stuck < 1000:
 			#on recupere la liste des noeuds adjacents
 			nextStates = self.getClosestStates(curState, self.map[0], self.map[1], 1)
 			#on stock le noeud courant
-			nextstate = curState
+			nextstate = nextStates[0]
 			for state in nextStates:
+				if state == self.goal:
+					nextstate = state
+					break
 				#print(state, curState)
 				#si state est plus petit que le prochain noeud
 				if self.u[ state[1] ][ state[0] ] < self.u[ nextstate[1] ][ nextstate[0] ] :
 					nextstate = state
 			path.append(nextstate)
-			if nextstate == curState:
+			if stuck > 100:
 				stuck = 0
+				path = []
 				print("stuck")
 				break;
 			curState = nextstate
-		print("path", path)
+			stuck += 1
+		#print("path", path)
 		return path
 
 
@@ -91,6 +96,7 @@ class PotentialField():
 		for x in range(minX, maxX+1):
 			for y in range(minY, maxY+1):
 				states.append([x, y])
-		#print("closest states:", states)
+		
 		#print("states = ", states)
+		#print("closest states:", states)
 		return states
