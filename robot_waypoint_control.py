@@ -4,6 +4,9 @@ from pprint import pprint
 import random
 from simuBot import *
 import sys
+import logging
+
+logger = logging.getLogger("SimuCESI")
 
 isMorse = True
 morse = []
@@ -51,16 +54,16 @@ def getBot(currentMap, number):
 
 def run(currentMap, missions, robots):
 	while missions or [ x for x in robots if x.mission ] :
-		#print([ x for x in robots if x.mission ])
+		logger.debug([ x for x in robots if x.mission ])
 		global collision
 		for bot in robots:
 			if not bot.mission and missions :
 				bot.mission = missions.pop()
 		for bot in robots:
-			#print(bot.mission)
+			logger.debug(bot.mission)
 			bot.act()
 		collision += checkCollision(robots)
-		print("nombre de mission restante :", len(missions))
+		logger.debug("nombre de mission restante :", len(missions))
 
 def checkCollision(robots):
 	val = 0
@@ -72,25 +75,25 @@ def checkCollision(robots):
 	return val
 
 def main():
-	maxX = 100
-	maxY = 100
+
+	maxX = 10
+	maxY = 10
 	missionNumber = 100
+	robotNumber = 2
 	global isMorse
 	global morse
 	global collision
-	obstaclesSeed = [	[5, 5, 5, 5],
+	obstaclesSeed = [	[5, 5, 5, 10],
 						[10, 10, 10, 10],	
 						[50, 50, 50, 50],
-						#[50, 0, 50, 50],
-						#[80, 50,100,50],
-						#[75,75,75,100],
-						#[25,50,25,100]	
+						[50, 25, 50, 50],
+						[80, 50, 90,50],
 						]
 	obstacles = generateObstacles(obstaclesSeed)
 	#obstacles = []
-	print("obstacles:", obstacles)
+	logger.debug("obstacles:", obstacles)
 	missions = generateMission(missionNumber, maxX, maxY, obstacles)
-	pprint(missions)
+	logger.debug(missions)
 	currentMap = { 'x':maxX , 'y':maxY, 'obstacles':obstacles }
 	robots = []
 	if len(sys.argv) > 1 :
@@ -99,9 +102,11 @@ def main():
 		robots = getMorseBot(currentMap, morse)
 	else:
 		isMorse = False
-		robots = getBot(currentMap, 50)
-	pprint(robots)
+		robots = getBot(currentMap, robotNumber)
+	logger.debug(robots)
 	run(currentMap, missions, robots)
+
+	print("Map Size: x:", maxX, "y:", maxY, "robot number:", len(robots) )
 	print("sucess:", sum([x.success for x in robots]) )
 	print("fail:", sum([x.fail for x in robots]) )
 	print("No  path:", sum([x.noPath for x in robots]) )
