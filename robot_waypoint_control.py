@@ -5,6 +5,7 @@ import random
 from simuBot import *
 import sys
 import logging
+import matplotlib.pyplot as plt
 
 logger = logging.getLogger("SimuCESI")
 
@@ -76,42 +77,72 @@ def checkCollision(robots):
 
 def main():
 
-	maxX = 10
-	maxY = 10
-	missionNumber = 100
-	robotNumber = 2
-	global isMorse
-	global morse
-	global collision
-	obstaclesSeed = [	[5, 5, 5, 10],
-						[10, 10, 10, 10],	
-						[50, 50, 50, 50],
-						[50, 25, 50, 50],
-						[80, 50, 90,50],
-						]
-	obstacles = generateObstacles(obstaclesSeed)
-	#obstacles = []
-	logger.debug("obstacles:", obstacles)
-	missions = generateMission(missionNumber, maxX, maxY, obstacles)
-	logger.debug(missions)
-	currentMap = { 'x':maxX , 'y':maxY, 'obstacles':obstacles }
-	robots = []
-	if len(sys.argv) > 1 :
-		morse = Morse()
-		isMorse = True
-		robots = getMorseBot(currentMap, morse)
-	else:
-		isMorse = False
-		robots = getBot(currentMap, robotNumber)
-	logger.debug(robots)
-	run(currentMap, missions, robots)
+	maps = []
+	sucesses = []
+	collisions = []
+	fails = []
+	noPaths = []
+	robotsQuantities = []
 
-	print("Map Size: x:", maxX, "y:", maxY, "robot number:", len(robots) )
-	print("sucess:", sum([x.success for x in robots]) )
-	print("fail:", sum([x.fail for x in robots]) )
-	print("No  path:", sum([x.noPath for x in robots]) )
-	print("collision", collision)
-	
+	for i in range(10,100):
+		maxX = i
+		maxY = i
+		missionNumber = i*2
+		robotNumber = int(i/5)
+		global isMorse
+		global morse
+		global collision
+		
+
+		obstaclesSeed = [	[5, 5, 5, 10],
+							[10, 10, 10, 10],	
+							[50, 50, 50, 50],
+							[50, 25, 50, 50],
+							[80, 50, 90, 50],
+							[200, 10, 200, 50],
+							[400, 150, 400, 450],
+							]
+		obstacles = generateObstacles(obstaclesSeed)
+		#obstacles = []
+		logger.debug("obstacles:", obstacles)
+		missions = generateMission(missionNumber, maxX, maxY, obstacles)
+		logger.debug(missions)
+		currentMap = { 'x':maxX , 'y':maxY, 'obstacles':obstacles }
+		robots = []
+		if len(sys.argv) > 1 :
+			morse = Morse()
+			isMorse = True
+			robots = getMorseBot(currentMap, morse)
+		else:
+			isMorse = False
+			robots = getBot(currentMap, robotNumber)
+		logger.debug(robots)
+		run(currentMap, missions, robots)
+
+		print("Map Size: x:", maxX, "y:", maxY, "robot number:", len(robots), "Nombre de mission:", missionNumber )
+		print("sucess:", sum([x.success for x in robots]),
+			  "/fail:", sum([x.fail for x in robots]) ,
+			  "/No path:", sum([x.noPath for x in robots]),
+			  "/Collision", collision , "\n")
+		maps.append(maxX*maxY)
+		sucesses.append(sum([x.success for x in robots]))
+		fails.append(sum([x.fail for x in robots]))
+		noPaths.append(sum([x.noPath for x in robots]))
+		collisions.append(collision)
+		robotsQuantities.append(len(robots))
+		
+	p1 = plt.plot(maps, sucesses)
+	p2 = plt.plot(maps, fails)
+	p3 = plt.plot(maps, noPaths)
+	p4 = plt.plot(maps, collisions)
+	p5 = plt.plot(maps, robotsQuantities)
+	plt.legend([p1,p2,p3,p4,p5], ["Suces","Echec","Pas de chemin","collisions", "nombre de robots"] )
+	plt.show()
+		#plt.plot(robotsQuantities, collisions)
+
+		
+
+
 	#goToNextPoint()
 
 if __name__ == "__main__":
