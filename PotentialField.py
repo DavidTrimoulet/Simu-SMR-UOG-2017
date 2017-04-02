@@ -19,7 +19,7 @@ class PotentialField():
 	def printMap(self,map):
 		for line in map:
 			line = [round(x) for x in line]
-			logger.debug(line)
+			print(line)
 
 	def generateRepulse(self):
 		for i in range(self.map[0]):
@@ -27,12 +27,11 @@ class PotentialField():
 			for j in range(self.map[1]):
 				line.append(0)
 			self.ur.append(line)
-		logger.debug(self.ur)
+		print(self.ur)
 		for obstacle in self.obstacles:
 			closests = self.getClosestStates(obstacle, self.map[0], self.map[1], self.robotSize)
 			for neighbour in closests :
 				self.ur[neighbour[0]][neighbour[1]] = self.repulseConst - self.getDistance(neighbour, obstacle)
-
 
 	def generateAttraction(self):
 		for y in range( self.map[1] ):
@@ -51,7 +50,6 @@ class PotentialField():
 			self.u.append(line)
 
 	def getPath(self):
-		logger.debug(self.u)
 		self.generateU()
 		self.printMap(self.u)
 		path = []
@@ -67,7 +65,7 @@ class PotentialField():
 				if state == self.goal:
 					nextstate = state
 					break
-				logger.debug(state, curState)
+				print(state, curState)
 				#si state est plus petit que le prochain noeud
 				if self.u[ state[1] ][ state[0] ] < self.u[ nextstate[1] ][ nextstate[0] ] :
 					nextstate = state
@@ -75,30 +73,28 @@ class PotentialField():
 			if stuck > 100:
 				stuck = 0
 				path = []
-				logger.debug("stuck")
+				print("stuck")
 				break;
 			curState = nextstate
 			stuck += 1
-		logger.debug("path", path)
+		print("path", path)
 		return path
-
 
 	def getDistance(self, a, b):
 		return math.sqrt( math.pow (a[0] - b[0] ,2) + math.pow (a[1] - b[1] , 2) )
 
-#
 	def getClosestStates(self, curState, xMax, yMax, d ):
 		states = []
 		minX = curState[0] - d if curState[0] - d > 0  else 0
 		minY = curState[1] - d if curState[1] - d > 0  else 0
 		maxX = curState[0] + d if curState[0] + d < xMax  else xMax-1
 		maxY = curState[1] + d if curState[1] + d < yMax  else yMax-1
-		logger.debug("CurrentState:", curState)
-		logger.debug("bornes", minX, maxX, minY, maxY)
+		print("CurrentState:", curState)
+		print("bornes", minX, maxX, minY, maxY)
 		for x in range(minX, maxX+1):
 			for y in range(minY, maxY+1):
 				states.append([x, y])
 		
-		logger.debug("states = ", states)
-		logger.debug("closest states:", states)
+		print("states = ", states)
+		print("closest states:", states)
 		return states

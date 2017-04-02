@@ -1,0 +1,31 @@
+DEBUG:root:test
+DEBUG:improvedTest:new mission, going to start point
+DEBUG:SimuCESI:[[0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]]
+DEBUG:SimuCESI:[11, 11, 10, 9, 9, 9, 8, 8, 8, 8]
+DEBUG:SimuCESI:[11, 10, 9, 9, 8, 8, 7, 7, 7, 7]
+DEBUG:SimuCESI:[10, 9, 8, 8, 7, 7, 6, 6, 6, 6]
+DEBUG:SimuCESI:[9, 9, 8, 7, 6, 6, 5, 5, 5, 5]
+DEBUG:SimuCESI:[9, 8, 7, 6, 9, 9, 8, 4, 4, 4]
+DEBUG:SimuCESI:[9, 8, 7, 6, 9, 9, 8, 3, 3, 3]
+DEBUG:SimuCESI:[8, 7, 6, 5, 8, 8, 6, 2, 2, 2]
+DEBUG:SimuCESI:[8, 7, 6, 5, 4, 3, 2, 1, 1, 1]
+DEBUG:SimuCESI:[8, 7, 6, 5, 4, 3, 2, 1, 0, 1]
+DEBUG:SimuCESI:[8, 7, 6, 5, 4, 3, 2, 1, 1, 1]
+DEBUG:improvedTest:mission done
+DEBUG:improvedTest:mission done
+DEBUG:root:test
+DEBUG:SimuCESI:[[0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]]
+DEBUG:SimuCESI:[11, 11, 10, 9, 9, 9, 8, 8, 8, 8]
+DEBUG:SimuCESI:[11, 10, 9, 9, 8, 8, 7, 7, 7, 7]
+DEBUG:SimuCESI:[10, 9, 8, 8, 7, 7, 6, 6, 6, 6]
+DEBUG:SimuCESI:[9, 9, 8, 7, 6, 6, 5, 5, 5, 5]
+DEBUG:SimuCESI:[9, 8, 7, 6, 9, 9, 8, 4, 4, 4]
+DEBUG:SimuCESI:[9, 8, 7, 6, 9, 9, 8, 3, 3, 3]
+DEBUG:SimuCESI:[8, 7, 6, 5, 8, 8, 6, 2, 2, 2]
+DEBUG:SimuCESI:[8, 7, 6, 5, 4, 3, 2, 1, 1, 1]
+DEBUG:SimuCESI:[8, 7, 6, 5, 4, 3, 2, 1, 0, 1]
+DEBUG:SimuCESI:[8, 7, 6, 5, 4, 3, 2, 1, 1, 1]
+DEBUG:root:test
+DEBUG:root:test
+DEBUG:root:test
+DEBUG:root:test

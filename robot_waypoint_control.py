@@ -3,11 +3,15 @@ import math
 from pprint import pprint
 import random
 from simuBot import *
+from ImprovedSimuBot import *
 import sys
 import logging
 import matplotlib.pyplot as plt
+from enum import Enum
 
-logger = logging.getLogger("SimuCESI")
+class robotType(Enum):
+	NORMAL = 0
+	IMPROVED = 1
 
 isMorse = True
 morse = []
@@ -46,25 +50,30 @@ def getMorseBot(currentMap, morse):
 	bots.append(simuBot(morse.robot4.robot4Pose, morse.robot4.robot4Waypoint, currentMap, isMorse))
 	return bots
 
-def getBot(currentMap, number):
+def getBot(botType, currentMap, number):
 	bots = []
 	global isMorse
 	for i in range(0, number):
-		bots.append(simuBot( {'x':int(i), 'y':int(i)}, {} , currentMap, isMorse ))
+		if botType == robotType.NORMAL:
+			bots.append(simuBot( {'x':int(i), 'y':int(i)}, {} , currentMap, isMorse ))
+		else :
+			bots.append(ImprovedSimuBot( {'x':int(i), 'y':int(i)}, {} , currentMap, isMorse ))
 	return bots
 
 def run(currentMap, missions, robots):
+	curTime = 0
 	while missions or [ x for x in robots if x.mission ] :
-		logger.debug([ x for x in robots if x.mission ])
+		print([ x for x in robots if x.mission ])
 		global collision
 		for bot in robots:
 			if not bot.mission and missions :
 				bot.mission = missions.pop()
 		for bot in robots:
-			logger.debug(bot.mission)
-			bot.act()
+			print(bot.mission)
+			bot.act(curTime)
+		curTime += 1
 		collision += checkCollision(robots)
-		logger.debug("nombre de mission restante :", len(missions))
+		print("nombre de mission restante :", len(missions))
 
 def checkCollision(robots):
 	val = 0
@@ -79,12 +88,18 @@ def main():
 
 	maps = []
 	sucesses = []
+	ImSuccesses = []
 	collisions = []
+	ImCollisions = []
 	fails = []
+	ImFails = []
 	noPaths = []
+	ImNoPaths = []
 	robotsQuantities = []
+	ImRobotsQuantities = []
 
-	for i in range(10,100):
+
+	for i in range(10,20):
 		maxX = i
 		maxY = i
 		missionNumber = i*2
@@ -94,30 +109,37 @@ def main():
 		global collision
 		
 
-		obstaclesSeed = [	[5, 5, 5, 10],
+		obstaclesSeed = [	[5, 5, 5, 5],
 							[10, 10, 10, 10],	
-							[50, 50, 50, 50],
-							[50, 25, 50, 50],
-							[80, 50, 90, 50],
-							[200, 10, 200, 50],
-							[400, 150, 400, 450],
+							#[50, 50, 50, 50],
+							#[50, 25, 50, 50],
+							#[80, 50, 90, 50],
+							#[200, 10, 200, 50],
+							#[400, 150, 400, 450],
 							]
 		obstacles = generateObstacles(obstaclesSeed)
 		#obstacles = []
-		logger.debug("obstacles:", obstacles)
+		print("obstacles:", obstacles)
 		missions = generateMission(missionNumber, maxX, maxY, obstacles)
-		logger.debug(missions)
+		print(missions)
 		currentMap = { 'x':maxX , 'y':maxY, 'obstacles':obstacles }
 		robots = []
+		ImRobots = []
 		if len(sys.argv) > 1 :
 			morse = Morse()
 			isMorse = True
 			robots = getMorseBot(currentMap, morse)
 		else:
 			isMorse = False
-			robots = getBot(currentMap, robotNumber)
-		logger.debug(robots)
-		run(currentMap, missions, robots)
+			robots = getBot(robotType.NORMAL, currentMap, robotNumber)
+			ImRobots = getBot(robotType.IMPROVED, currentMap, robotNumber)
+		
+		print(robots)
+		print(ImRobots)
+		NormalMissions = list(missions)
+		ImprovedMissions = list(missions)
+
+		run(currentMap, NormalMissions, robots)
 
 		print("Map Size: x:", maxX, "y:", maxY, "robot number:", len(robots), "Nombre de mission:", missionNumber )
 		print("sucess:", sum([x.success for x in robots]),
@@ -130,15 +152,34 @@ def main():
 		noPaths.append(sum([x.noPath for x in robots]))
 		collisions.append(collision)
 		robotsQuantities.append(len(robots))
+
+		collision = 0
 		
-	p1 = plt.plot(maps, sucesses)
-	p2 = plt.plot(maps, fails)
-	p3 = plt.plot(maps, noPaths)
-	p4 = plt.plot(maps, collisions)
-	p5 = plt.plot(maps, robotsQuantities)
-	plt.legend([p1,p2,p3,p4,p5], ["Suces","Echec","Pas de chemin","collisions", "nombre de robots"] )
+		run(currentMap, ImprovedMissions, ImRobots)
+
+		print("Map Size: x:", maxX, "y:", maxY, "robot number:", len(robots), "Nombre de mission:", missionNumber )
+		print("sucess:", sum([x.success for x in ImRobots]),
+			  "/fail:", sum([x.fail for x in ImRobots]) ,
+			  "/No path:", sum([x.noPath for x in ImRobots]),
+			  "/Collision", collision , "\n")
+		ImSuccesses.append(sum([x.success for x in ImRobots]))
+		ImFails.append(sum([x.fail for x in ImRobots]))
+		ImNoPaths.append(sum([x.noPath for x in ImRobots]))
+		ImCollisions.append(collision)
+		ImRobotsQuantities.append(len(ImRobots))
+
+		
+	plt.plot(maps, sucesses)
+	plt.figure()
+	plt.plot(maps, fails)
+	plt.figure()
+	plt.plot(maps, noPaths)
+	plt.figure()
+	plt.plot(maps, collisions)
+	plt.figure()
+	plt.plot(maps, robotsQuantities)
 	plt.show()
-		#plt.plot(robotsQuantities, collisions)
+
 
 		
 
@@ -147,3 +188,6 @@ def main():
 
 if __name__ == "__main__":
 	main()
+
+
+
