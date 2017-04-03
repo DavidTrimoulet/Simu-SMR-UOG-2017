@@ -37,7 +37,7 @@ class ImprovedPotentialField(PotentialField):
 				#si state est plus petit que le prochain noeud
 				if ( self.u[ state[1] ][ state[0] ] + self.getTimeValue(state, stateTime) )  < self.u[ nextstate[1] ][ nextstate[0] ] :
 					nextstate = state
-			path.append( [ nextstate[1], nextstate[0] , stateTime ] )
+			path.append( [ nextstate[0], nextstate[1] , stateTime ] )
 			if stuck > 100:
 				stuck = 0
 				path = []

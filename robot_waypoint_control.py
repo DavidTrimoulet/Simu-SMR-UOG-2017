@@ -99,7 +99,7 @@ def main():
 	ImRobotsQuantities = []
 
 
-	for i in range(10,20):
+	for i in range(10,100):
 		maxX = i
 		maxY = i
 		missionNumber = i*2
@@ -111,11 +111,11 @@ def main():
 
 		obstaclesSeed = [	[5, 5, 5, 5],
 							[10, 10, 10, 10],	
-							#[50, 50, 50, 50],
-							#[50, 25, 50, 50],
-							#[80, 50, 90, 50],
-							#[200, 10, 200, 50],
-							#[400, 150, 400, 450],
+							[50, 50, 50, 50],
+							[50, 25, 50, 50],
+							[80, 50, 90, 50],
+							[200, 10, 200, 50],
+							[400, 150, 400, 450],
 							]
 		obstacles = generateObstacles(obstaclesSeed)
 		#obstacles = []
