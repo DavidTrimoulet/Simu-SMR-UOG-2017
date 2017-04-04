@@ -1,9 +1,6 @@
 from simuBot import simuBot
 from ImprovedPotentialField import *
 from pymorse import Morse
-import logging
-
-logger = logging.getLogger("improvedTest")
 
 class ImprovedSimuBot(simuBot):
 
@@ -18,8 +15,11 @@ class ImprovedSimuBot(simuBot):
 				robotsPath.append(path)
 		pot =  ImprovedPotentialField( [ self.map['x'], self.map['y'] ] , self.map['obstacles'], 1, [round(self.position['x']),round(self.position['y'])], Goal, curTime, robotsPath )
 		self.path = pot.getPath()
-		print("chemin:", self.path, "mission:", self.mission)
+		#print("chemin:", self.path, "mission:", self.mission)
 		self.pathStep = 1
+		if not self.path :
+			self.noPath += 1
+			self.mission = []		
 
 	def setOthersBots(self, otherBots):
 		self.otherBots = otherBots

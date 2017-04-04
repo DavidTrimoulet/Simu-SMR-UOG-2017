@@ -1,7 +1,6 @@
 from ImprovedPotentialField import ImprovedPotentialField
 from ImprovedSimuBot import ImprovedSimuBot
 import pprint
-import logging
 
 
 def main():

@@ -1,11 +1,9 @@
 from pymorse import Morse
 import math
-from pprint import pprint
 import random
 from simuBot import *
 from ImprovedSimuBot import *
 import sys
-import logging
 import matplotlib.pyplot as plt
 from enum import Enum
 
@@ -31,11 +29,11 @@ def getRandomCoordinate(XmaxVal, YmaxVal):
 def generateMission(missionQuantity, width, height, obstacles):
 	missions = []
 	for i in range(missionQuantity):
-		mission = []
-		while len(mission) < 2 :
+		mission = 0
+		while not mission :
 			coor = getRandomCoordinate(width, height)  
 			if coor not in obstacles:
-				mission.append(coor)
+				mission = coor
 
 		missions.append(mission)
 
@@ -62,27 +60,31 @@ def getBot(botType, currentMap, number):
 
 def run(currentMap, missions, robots):
 	curTime = 0
+	global collision
 	while missions or [ x for x in robots if x.mission ] :
-		print([ x for x in robots if x.mission ])
-		global collision
+		#print([ x for x in robots if x.mission ])
+		#print("time:",curTime)
 		for bot in robots:
 			if not bot.mission and missions :
 				bot.mission = missions.pop()
 		for bot in robots:
-			print(bot.mission)
+			#print(bot.mission)
 			bot.act(curTime)
-		curTime += 1
 		collision += checkCollision(robots)
-		print("nombre de mission restante :", len(missions))
+		curTime += 1
+		#print("nombre de mission restante :", len(missions))
 
 def checkCollision(robots):
 	val = 0
 	for i in range(0, len(robots)):
 		for j in range(0, len(robots)):
 			if i != j :
-				if robots[i].position == robots[j].position :
+				#print("robot:",robots[i],"is at:", robots[i].position  )
+				if robots[i].position and (robots[i].position == robots[j].position) :
+					#print("robots :", robots[i], "path:", robots[i].path)
+					#print("Et paf")
 					val += 1
-	return val
+	return (val / 2)
 
 def main():
 
@@ -119,9 +121,9 @@ def main():
 							]
 		obstacles = generateObstacles(obstaclesSeed)
 		#obstacles = []
-		print("obstacles:", obstacles)
+		#print("obstacles:", obstacles)
 		missions = generateMission(missionNumber, maxX, maxY, obstacles)
-		print(missions)
+		#print(missions)
 		currentMap = { 'x':maxX , 'y':maxY, 'obstacles':obstacles }
 		robots = []
 		ImRobots = []
@@ -133,14 +135,17 @@ def main():
 			isMorse = False
 			robots = getBot(robotType.NORMAL, currentMap, robotNumber)
 			ImRobots = getBot(robotType.IMPROVED, currentMap, robotNumber)
+			for bot in ImRobots:
+				bot.setOthersBots([x for x in ImRobots if x != bot])
+				#print("robot OtherRobots", bot.otherBots)
 		
-		print(robots)
-		print(ImRobots)
+		#print(robots)
+		#print(ImRobots)
 		NormalMissions = list(missions)
 		ImprovedMissions = list(missions)
 
 		run(currentMap, NormalMissions, robots)
-
+		print("Normal Potential Field")
 		print("Map Size: x:", maxX, "y:", maxY, "robot number:", len(robots), "Nombre de mission:", missionNumber )
 		print("sucess:", sum([x.success for x in robots]),
 			  "/fail:", sum([x.fail for x in robots]) ,
@@ -156,7 +161,7 @@ def main():
 		collision = 0
 		
 		run(currentMap, ImprovedMissions, ImRobots)
-
+		print("Improved Potential Field")
 		print("Map Size: x:", maxX, "y:", maxY, "robot number:", len(robots), "Nombre de mission:", missionNumber )
 		print("sucess:", sum([x.success for x in ImRobots]),
 			  "/fail:", sum([x.fail for x in ImRobots]) ,
@@ -167,18 +172,18 @@ def main():
 		ImNoPaths.append(sum([x.noPath for x in ImRobots]))
 		ImCollisions.append(collision)
 		ImRobotsQuantities.append(len(ImRobots))
-
-		
-	plt.plot(maps, sucesses)
-	plt.figure()
-	plt.plot(maps, fails)
-	plt.figure()
-	plt.plot(maps, noPaths)
-	plt.figure()
-	plt.plot(maps, collisions)
-	plt.figure()
-	plt.plot(maps, robotsQuantities)
-	plt.show()
+	
+	print("collision Diff:", ( (sum(ImCollisions) / sum(collisions)) * 100 ) )
+	# plt.plot(maps, sucesses)
+	# plt.figure()
+	# plt.plot(maps, fails)
+	# plt.figure()
+	# plt.plot(maps, noPaths)
+	# plt.figure()
+	# plt.plot(maps, collisions)
+	# plt.figure()
+	# plt.plot(maps, robotsQuantities)
+	# plt.show()
 
 
 		
