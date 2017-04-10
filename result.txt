@@ -1,6 +1,6 @@
 Normal Potential Field
 Map Size: x: 10 y: 10 robot number: 2 Nombre de mission: 20
-sucess: 20 /fail: 0 /No path: 0 /Collision 0.0 
+sucess: 20 /fail: 0 /No path: 0 /Collision 1.0 
 
 Improved Potential Field
 Map Size: x: 10 y: 10 robot number: 2 Nombre de mission: 20
@@ -16,7 +16,7 @@ sucess: 22 /fail: 0 /No path: 0 /Collision 1.0
 
 Normal Potential Field
 Map Size: x: 12 y: 12 robot number: 2 Nombre de mission: 24
-sucess: 24 /fail: 0 /No path: 0 /Collision 3.0 
+sucess: 24 /fail: 0 /No path: 0 /Collision 1.0 
 
 Improved Potential Field
 Map Size: x: 12 y: 12 robot number: 2 Nombre de mission: 24
@@ -24,39 +24,39 @@ sucess: 24 /fail: 0 /No path: 0 /Collision 0.0
 
 Normal Potential Field
 Map Size: x: 13 y: 13 robot number: 2 Nombre de mission: 26
-sucess: 26 /fail: 0 /No path: 0 /Collision 2.0 
+sucess: 24 /fail: 0 /No path: 2 /Collision 0.0 
 
 Improved Potential Field
 Map Size: x: 13 y: 13 robot number: 2 Nombre de mission: 26
-sucess: 26 /fail: 0 /No path: 0 /Collision 1.0 
+sucess: 24 /fail: 0 /No path: 2 /Collision 0.0 
 
 Normal Potential Field
 Map Size: x: 14 y: 14 robot number: 2 Nombre de mission: 28
-sucess: 26 /fail: 0 /No path: 2 /Collision 5.0 
+sucess: 26 /fail: 0 /No path: 2 /Collision 0.0 
 
 Improved Potential Field
 Map Size: x: 14 y: 14 robot number: 2 Nombre de mission: 28
-sucess: 26 /fail: 0 /No path: 2 /Collision 1.0 
+sucess: 26 /fail: 0 /No path: 2 /Collision 0.0 
 
 Normal Potential Field
 Map Size: x: 15 y: 15 robot number: 3 Nombre de mission: 30
-sucess: 30 /fail: 0 /No path: 0 /Collision 8.0 
+sucess: 29 /fail: 0 /No path: 1 /Collision 1.0 
 
 Improved Potential Field
 Map Size: x: 15 y: 15 robot number: 3 Nombre de mission: 30
-sucess: 30 /fail: 0 /No path: 0 /Collision 2.0 
+sucess: 29 /fail: 0 /No path: 1 /Collision 1.0 
 
 Normal Potential Field
-Map Size: x: 16 y: 16 robot number: 3 Nombre de mission: 32
-sucess: 29 /fail: 0 /No path: 3 /Collision 6.0 
-
-Improved Potential Field
 Map Size: x: 16 y: 16 robot number: 3 Nombre de mission: 32
 sucess: 31 /fail: 0 /No path: 1 /Collision 1.0 
 
+Improved Potential Field
+Map Size: x: 16 y: 16 robot number: 3 Nombre de mission: 32
+sucess: 32 /fail: 0 /No path: 0 /Collision 0.0 
+
 Normal Potential Field
 Map Size: x: 17 y: 17 robot number: 3 Nombre de mission: 34
-sucess: 31 /fail: 0 /No path: 3 /Collision 2.0 
+sucess: 33 /fail: 0 /No path: 1 /Collision 1.0 
 
 Improved Potential Field
 Map Size: x: 17 y: 17 robot number: 3 Nombre de mission: 34
@@ -64,47 +64,47 @@ sucess: 33 /fail: 0 /No path: 1 /Collision 0.0
 
 Normal Potential Field
 Map Size: x: 18 y: 18 robot number: 3 Nombre de mission: 36
-sucess: 35 /fail: 0 /No path: 1 /Collision 1.0 
+sucess: 32 /fail: 0 /No path: 4 /Collision 2.0 
 
 Improved Potential Field
 Map Size: x: 18 y: 18 robot number: 3 Nombre de mission: 36
-sucess: 35 /fail: 0 /No path: 1 /Collision 1.0 
+sucess: 32 /fail: 0 /No path: 4 /Collision 1.0 
 
 Normal Potential Field
 Map Size: x: 19 y: 19 robot number: 3 Nombre de mission: 38
-sucess: 38 /fail: 0 /No path: 0 /Collision 3.0 
+sucess: 37 /fail: 0 /No path: 1 /Collision 1.0 
 
 Improved Potential Field
 Map Size: x: 19 y: 19 robot number: 3 Nombre de mission: 38
-sucess: 38 /fail: 0 /No path: 0 /Collision 1.0 
+sucess: 37 /fail: 0 /No path: 1 /Collision 0.0 
 
 Normal Potential Field
 Map Size: x: 20 y: 20 robot number: 4 Nombre de mission: 40
-sucess: 39 /fail: 0 /No path: 1 /Collision 6.0 
+sucess: 36 /fail: 0 /No path: 4 /Collision 6.0 
 
 Improved Potential Field
 Map Size: x: 20 y: 20 robot number: 4 Nombre de mission: 40
-sucess: 39 /fail: 0 /No path: 1 /Collision 4.0 
+sucess: 35 /fail: 0 /No path: 5 /Collision 1.0 
 
 Normal Potential Field
-Map Size: x: 21 y: 21 robot number: 4 Nombre de mission: 42
-sucess: 41 /fail: 0 /No path: 1 /Collision 7.0 
-
-Improved Potential Field
 Map Size: x: 21 y: 21 robot number: 4 Nombre de mission: 42
 sucess: 41 /fail: 0 /No path: 1 /Collision 3.0 
 
+Improved Potential Field
+Map Size: x: 21 y: 21 robot number: 4 Nombre de mission: 42
+sucess: 41 /fail: 0 /No path: 1 /Collision 0.0 
+
 Normal Potential Field
 Map Size: x: 22 y: 22 robot number: 4 Nombre de mission: 44
-sucess: 44 /fail: 0 /No path: 0 /Collision 6.0 
+sucess: 41 /fail: 0 /No path: 3 /Collision 3.0 
 
 Improved Potential Field
 Map Size: x: 22 y: 22 robot number: 4 Nombre de mission: 44
-sucess: 44 /fail: 0 /No path: 0 /Collision 0.0 
+sucess: 42 /fail: 0 /No path: 2 /Collision 0.0 
 
 Normal Potential Field
 Map Size: x: 23 y: 23 robot number: 4 Nombre de mission: 46
-sucess: 46 /fail: 0 /No path: 0 /Collision 2.0 
+sucess: 46 /fail: 0 /No path: 0 /Collision 1.0 
 
 Improved Potential Field
 Map Size: x: 23 y: 23 robot number: 4 Nombre de mission: 46
@@ -112,5 +112,173 @@ sucess: 46 /fail: 0 /No path: 0 /Collision 0.0
 
 Normal Potential Field
 Map Size: x: 24 y: 24 robot number: 4 Nombre de mission: 48
-sucess: 48 /fail: 0 /No path: 0 /Collision 1.0 
+sucess: 47 /fail: 0 /No path: 1 /Collision 6.0 
+
+Improved Potential Field
+Map Size: x: 24 y: 24 robot number: 4 Nombre de mission: 48
+sucess: 47 /fail: 0 /No path: 1 /Collision 1.0 
+
+Normal Potential Field
+Map Size: x: 25 y: 25 robot number: 5 Nombre de mission: 50
+sucess: 50 /fail: 0 /No path: 0 /Collision 2.0 
+
+Improved Potential Field
+Map Size: x: 25 y: 25 robot number: 5 Nombre de mission: 50
+sucess: 50 /fail: 0 /No path: 0 /Collision 0.0 
+
+Normal Potential Field
+Map Size: x: 26 y: 26 robot number: 5 Nombre de mission: 52
+sucess: 52 /fail: 0 /No path: 0 /Collision 4.0 
+
+Improved Potential Field
+Map Size: x: 26 y: 26 robot number: 5 Nombre de mission: 52
+sucess: 52 /fail: 0 /No path: 0 /Collision 0.0 
+
+Normal Potential Field
+Map Size: x: 27 y: 27 robot number: 5 Nombre de mission: 54
+sucess: 53 /fail: 0 /No path: 1 /Collision 9.0 
+
+Improved Potential Field
+Map Size: x: 27 y: 27 robot number: 5 Nombre de mission: 54
+sucess: 53 /fail: 0 /No path: 1 /Collision 4.0 
+
+Normal Potential Field
+Map Size: x: 28 y: 28 robot number: 5 Nombre de mission: 56
+sucess: 56 /fail: 0 /No path: 0 /Collision 5.0 
+
+Improved Potential Field
+Map Size: x: 28 y: 28 robot number: 5 Nombre de mission: 56
+sucess: 56 /fail: 0 /No path: 0 /Collision 1.0 
+
+Normal Potential Field
+Map Size: x: 29 y: 29 robot number: 5 Nombre de mission: 58
+sucess: 58 /fail: 0 /No path: 0 /Collision 2.0 
+
+Improved Potential Field
+Map Size: x: 29 y: 29 robot number: 5 Nombre de mission: 58
+sucess: 58 /fail: 0 /No path: 0 /Collision 0.0 
+
+Normal Potential Field
+Map Size: x: 30 y: 30 robot number: 6 Nombre de mission: 60
+sucess: 60 /fail: 0 /No path: 0 /Collision 4.0 
+
+Improved Potential Field
+Map Size: x: 30 y: 30 robot number: 6 Nombre de mission: 60
+sucess: 59 /fail: 0 /No path: 1 /Collision 2.0 
+
+Normal Potential Field
+Map Size: x: 31 y: 31 robot number: 6 Nombre de mission: 62
+sucess: 62 /fail: 0 /No path: 0 /Collision 3.0 
+
+Improved Potential Field
+Map Size: x: 31 y: 31 robot number: 6 Nombre de mission: 62
+sucess: 62 /fail: 0 /No path: 0 /Collision 1.0 
+
+Normal Potential Field
+Map Size: x: 32 y: 32 robot number: 6 Nombre de mission: 64
+sucess: 64 /fail: 0 /No path: 0 /Collision 7.0 
+
+Improved Potential Field
+Map Size: x: 32 y: 32 robot number: 6 Nombre de mission: 64
+sucess: 64 /fail: 0 /No path: 0 /Collision 3.0 
+
+Normal Potential Field
+Map Size: x: 33 y: 33 robot number: 6 Nombre de mission: 66
+sucess: 65 /fail: 0 /No path: 1 /Collision 3.0 
+
+Improved Potential Field
+Map Size: x: 33 y: 33 robot number: 6 Nombre de mission: 66
+sucess: 64 /fail: 0 /No path: 2 /Collision 3.0 
+
+Normal Potential Field
+Map Size: x: 34 y: 34 robot number: 6 Nombre de mission: 68
+sucess: 66 /fail: 0 /No path: 2 /Collision 5.0 
+
+Improved Potential Field
+Map Size: x: 34 y: 34 robot number: 6 Nombre de mission: 68
+sucess: 65 /fail: 0 /No path: 3 /Collision 0.0 
+
+Normal Potential Field
+Map Size: x: 35 y: 35 robot number: 7 Nombre de mission: 70
+sucess: 67 /fail: 0 /No path: 3 /Collision 0.0 
+
+Improved Potential Field
+Map Size: x: 35 y: 35 robot number: 7 Nombre de mission: 70
+sucess: 69 /fail: 0 /No path: 1 /Collision 2.0 
+
+Normal Potential Field
+Map Size: x: 36 y: 36 robot number: 7 Nombre de mission: 72
+sucess: 71 /fail: 0 /No path: 1 /Collision 5.0 
+
+Improved Potential Field
+Map Size: x: 36 y: 36 robot number: 7 Nombre de mission: 72
+sucess: 72 /fail: 0 /No path: 0 /Collision 1.0 
+
+Normal Potential Field
+Map Size: x: 37 y: 37 robot number: 7 Nombre de mission: 74
+sucess: 74 /fail: 0 /No path: 0 /Collision 4.0 
+
+Improved Potential Field
+Map Size: x: 37 y: 37 robot number: 7 Nombre de mission: 74
+sucess: 73 /fail: 0 /No path: 1 /Collision 1.0 
+
+Normal Potential Field
+Map Size: x: 38 y: 38 robot number: 7 Nombre de mission: 76
+sucess: 75 /fail: 0 /No path: 1 /Collision 8.0 
+
+Improved Potential Field
+Map Size: x: 38 y: 38 robot number: 7 Nombre de mission: 76
+sucess: 75 /fail: 0 /No path: 1 /Collision 2.0 
+
+Normal Potential Field
+Map Size: x: 39 y: 39 robot number: 7 Nombre de mission: 78
+sucess: 77 /fail: 0 /No path: 1 /Collision 7.0 
+
+Improved Potential Field
+Map Size: x: 39 y: 39 robot number: 7 Nombre de mission: 78
+sucess: 77 /fail: 0 /No path: 1 /Collision 3.0 
+
+Normal Potential Field
+Map Size: x: 40 y: 40 robot number: 8 Nombre de mission: 80
+sucess: 80 /fail: 0 /No path: 0 /Collision 4.0 
+
+Improved Potential Field
+Map Size: x: 40 y: 40 robot number: 8 Nombre de mission: 80
+sucess: 79 /fail: 0 /No path: 1 /Collision 2.0 
+
+Normal Potential Field
+Map Size: x: 41 y: 41 robot number: 8 Nombre de mission: 82
+sucess: 80 /fail: 0 /No path: 2 /Collision 3.0 
+
+Improved Potential Field
+Map Size: x: 41 y: 41 robot number: 8 Nombre de mission: 82
+sucess: 80 /fail: 0 /No path: 2 /Collision 1.0 
+
+Normal Potential Field
+Map Size: x: 42 y: 42 robot number: 8 Nombre de mission: 84
+sucess: 83 /fail: 0 /No path: 1 /Collision 8.0 
+
+Improved Potential Field
+Map Size: x: 42 y: 42 robot number: 8 Nombre de mission: 84
+sucess: 83 /fail: 0 /No path: 1 /Collision 1.0 
+
+Normal Potential Field
+Map Size: x: 43 y: 43 robot number: 8 Nombre de mission: 86
+sucess: 85 /fail: 0 /No path: 1 /Collision 8.0 
+
+Improved Potential Field
+Map Size: x: 43 y: 43 robot number: 8 Nombre de mission: 86
+sucess: 85 /fail: 0 /No path: 1 /Collision 3.0 
+
+Normal Potential Field
+Map Size: x: 44 y: 44 robot number: 8 Nombre de mission: 88
+sucess: 88 /fail: 0 /No path: 0 /Collision 5.0 
+
+Improved Potential Field
+Map Size: x: 44 y: 44 robot number: 8 Nombre de mission: 88
+sucess: 88 /fail: 0 /No path: 0 /Collision 3.0 
+
+Normal Potential Field
+Map Size: x: 45 y: 45 robot number: 9 Nombre de mission: 90
+sucess: 90 /fail: 0 /No path: 0 /Collision 25.0 
 

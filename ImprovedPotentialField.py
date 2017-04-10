@@ -50,19 +50,26 @@ class ImprovedPotentialField(PotentialField):
 		return path
 
 	def generateUrobots(self) :
+		uRobot = []
 		for i in range(self.map[0]):
 			line = []
 			for j in range(self.map[1]):
 				line.append(-100)
-			self.uRobots.append(line)
+			uRobot.append(line)
 		#print("Other Robot Path",self.robotsPath)
-		for coorAtTime in self.robotsPath :
-			self.uRobots[ coorAtTime[1] ][ coorAtTime[0] ] = coorAtTime[2]
+		for bot in self.robotsPath:
+			curUbot = list(uRobot)
+			for coorAtTime in bot :
+				curUbot[ coorAtTime[1] ][ coorAtTime[0] ] = coorAtTime[2]
+			self.uRobots.append(curUbot)
 
 	def getTimeValue(self, state, time) :
-		timeval = ( - pow(self.uRobots[ state[1] ][ state[0] ] - time , 10) + self.timeConst )
-		timeval = 0 if timeval < 0 else timeval 
-		return timeval
+		maxTimeVal = 0
+		for uBot in self.uRobots:
+			timeval = ( - pow(uBot[ state[1] ][ state[0] ] - time , 10) + self.timeConst )
+			timeval = 0 if timeval < 0 else timeval
+			maxTimeVal = timeval if timeval > maxTimeVal else maxTimeVal
+		return maxTimeVal
 
 	def generateTimeMap(self, stateTime):
 		timeMap=[]

@@ -12,7 +12,8 @@ class ImprovedSimuBot(simuBot):
 		robotsPath = []
 		for bot in self.otherBots :
 			for path in bot.path:
-				robotsPath.append(path)
+				robotsPath.append([path])
+		#print(robotsPath)
 		pot =  ImprovedPotentialField( [ self.map['x'], self.map['y'] ] , self.map['obstacles'], 1, [round(self.position['x']),round(self.position['y'])], Goal, curTime, robotsPath )
 		self.path = pot.getPath()
 		#print("chemin:", self.path, "mission:", self.mission)
