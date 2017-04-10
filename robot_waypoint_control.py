@@ -6,6 +6,7 @@ from ImprovedSimuBot import *
 import sys
 import matplotlib.pyplot as plt
 from enum import Enum
+import time
 
 class robotType(Enum):
 	NORMAL = 0
@@ -99,6 +100,8 @@ def main():
 	ImNoPaths = []
 	robotsQuantities = []
 	ImRobotsQuantities = []
+	NormalMissionTime = []
+	ImprovedMissionTime = []
 
 
 	for i in range(10,100):
@@ -143,36 +146,44 @@ def main():
 		#print(ImRobots)
 		NormalMissions = list(missions)
 		ImprovedMissions = list(missions)
-
+		NormalTimeStart = time.process_time() 
 		run(currentMap, NormalMissions, robots)
+		NormalTime = NormalTimeStart -time.process_time()
 		print("Normal Potential Field")
 		print("Map Size: x:", maxX, "y:", maxY, "robot number:", len(robots), "Nombre de mission:", missionNumber )
 		print("sucess:", sum([x.success for x in robots]),
 			  "/fail:", sum([x.fail for x in robots]) ,
 			  "/No path:", sum([x.noPath for x in robots]),
-			  "/Collision", collision , "\n")
+			  "/Collision", collision , 
+			  "/time Ellasped : ", NormalTime,
+			  "\n")
 		maps.append(maxX*maxY)
 		sucesses.append(sum([x.success for x in robots]))
 		fails.append(sum([x.fail for x in robots]))
 		noPaths.append(sum([x.noPath for x in robots]))
 		collisions.append(collision)
 		robotsQuantities.append(len(robots))
+		NormalMissionTime.append(NormalTime)
 
 		collision = 0
-		
+		ImprovedTimeStart = time.process_time()
 		run(currentMap, ImprovedMissions, ImRobots)
+		ImprovedTime = NormalTimeStart -time.process_time()
 		print("Improved Potential Field")
 		print("Map Size: x:", maxX, "y:", maxY, "robot number:", len(robots), "Nombre de mission:", missionNumber )
 		print("sucess:", sum([x.success for x in ImRobots]),
 			  "/fail:", sum([x.fail for x in ImRobots]) ,
 			  "/No path:", sum([x.noPath for x in ImRobots]),
-			  "/Collision", collision , "\n")
+			  "/Collision", collision ,
+			  "/time Ellasped : ", ImprovedTime,
+			  "\n")
 		ImSuccesses.append(sum([x.success for x in ImRobots]))
 		ImFails.append(sum([x.fail for x in ImRobots]))
 		ImNoPaths.append(sum([x.noPath for x in ImRobots]))
 		ImCollisions.append(collision)
 		ImRobotsQuantities.append(len(ImRobots))
-	
+		ImprovedMissionTime.append(ImprovedTime)
+
 	print("collision Diff:", ( (sum(ImCollisions) / sum(collisions)) * 100 ) )
 	plt.plot(maps, sucesses, label='normal' )
 	plt.plot(maps, ImSuccesses, label='Improved' )
