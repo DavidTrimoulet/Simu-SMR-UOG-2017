@@ -148,14 +148,14 @@ def main():
 		ImprovedMissions = list(missions)
 		NormalTimeStart = time.process_time() 
 		run(currentMap, NormalMissions, robots)
-		NormalTime = NormalTimeStart -time.process_time()
+		NormalTime = time.process_time() - NormalTimeStart
 		print("Normal Potential Field")
 		print("Map Size: x:", maxX, "y:", maxY, "robot number:", len(robots), "Nombre de mission:", missionNumber )
 		print("sucess:", sum([x.success for x in robots]),
 			  "/fail:", sum([x.fail for x in robots]) ,
 			  "/No path:", sum([x.noPath for x in robots]),
 			  "/Collision", collision , 
-			  "/time Ellasped : ", NormalTime,
+			  "/time Ellasped : ", NormalTime + collision * 2,
 			  "\n")
 		maps.append(maxX*maxY)
 		sucesses.append(sum([x.success for x in robots]))
@@ -163,12 +163,12 @@ def main():
 		noPaths.append(sum([x.noPath for x in robots]))
 		collisions.append(collision)
 		robotsQuantities.append(len(robots))
-		NormalMissionTime.append(NormalTime)
+		NormalMissionTime.append(NormalTime + collision * 2)
 
 		collision = 0
 		ImprovedTimeStart = time.process_time()
 		run(currentMap, ImprovedMissions, ImRobots)
-		ImprovedTime = NormalTimeStart -time.process_time()
+		ImprovedTime = time.process_time() - ImprovedTimeStart
 		print("Improved Potential Field")
 		print("Map Size: x:", maxX, "y:", maxY, "robot number:", len(robots), "Nombre de mission:", missionNumber )
 		print("sucess:", sum([x.success for x in ImRobots]),
@@ -214,6 +214,12 @@ def main():
 	plt.xlabel("map size")
 	plt.ylabel("Robots")
 	plt.title("map size/Robots")
+	plt.figure()
+	plt.plot(maps, NormalMissionTime, label='normal' )
+	plt.plot(maps, ImprovedMissionTime, label='Improved' )
+	plt.xlabel("map size")
+	plt.ylabel("Execution Time")
+	plt.title("map size/Execution Time")
 	plt.show()
 
 

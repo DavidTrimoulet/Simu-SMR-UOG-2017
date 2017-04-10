@@ -46,27 +46,26 @@ class ImprovedPotentialField(PotentialField):
 			curState = nextstate
 			stuck += 1
 			#print("Choosen State:", curState)
+		if len(path) > 0:
+			path.append( path[ len(path)-1 ] )
 		#print("Improved path", path)
 		return path
 
 	def generateUrobots(self) :
-		uRobot = []
 		for i in range(self.map[0]):
 			line = []
 			for j in range(self.map[1]):
-				line.append(-100)
-			uRobot.append(line)
+				line.append([-100])
+			self.uRobots.append(line)
 		#print("Other Robot Path",self.robotsPath)
 		for bot in self.robotsPath:
-			curUbot = list(uRobot)
 			for coorAtTime in bot :
-				curUbot[ coorAtTime[1] ][ coorAtTime[0] ] = coorAtTime[2]
-			self.uRobots.append(curUbot)
+				self.uRobots[ coorAtTime[1] ][ coorAtTime[0] ].append(coorAtTime[2])
 
 	def getTimeValue(self, state, time) :
 		maxTimeVal = 0
-		for uBot in self.uRobots:
-			timeval = ( - pow(uBot[ state[1] ][ state[0] ] - time , 10) + self.timeConst )
+		for moment in self.uRobots[ state[1] ][ state[0] ] :
+			timeval = ( - pow( moment - time , 10) + self.timeConst )
 			timeval = 0 if timeval < 0 else timeval
 			maxTimeVal = timeval if timeval > maxTimeVal else maxTimeVal
 		return maxTimeVal
